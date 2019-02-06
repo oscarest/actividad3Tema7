@@ -28,6 +28,7 @@ public class DB_SQLite extends SQLiteOpenHelper {
             Esquema.Producto.COLUMN_NAME_CANTIDAD + " " + Esquema.Producto.COLUMN_TYPE_CANTIDAD + ", " +
             Esquema.Producto.COLUMN_NAME_IDSECCION + " " + Esquema.Producto.COLUMN_TYPE_IDSECCION + ")";
     // " FOREIGN KEY (" + Esquema.Producto.COLUMN_NAME_ID + ") REFERENCES " + Esquema.Seccion.TABLE_NAME + "(" + Esquema.Seccion.COLUMN_NAME_ID + ")" +
+    //EL SIGUIENTE CÓDIGO ELIMINA TODOS LAS REFERENCIAS QUE TENGA NUESTRA FK
     // " ON UPDATE CASCADE ON DELETE CASCADE)";
 
 
