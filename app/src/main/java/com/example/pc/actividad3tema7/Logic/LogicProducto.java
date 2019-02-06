@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.pc.actividad3tema7.DataBaseManager.DB_SQLite;
 import com.example.pc.actividad3tema7.DataBaseManager.Esquema;
 import com.example.pc.actividad3tema7.Model.Producto;
+import com.example.pc.actividad3tema7.Model.Seccion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +66,8 @@ public class LogicProducto {
         return elto;
     }
 
-    public static List listaProductos(Context context) {
+    public static List listaProductos(Context context)
+    {
         List lst = new ArrayList<>();
 
         String[] sqlFields = {Esquema.Producto.COLUMN_NAME_ID, Esquema.Producto.COLUMN_NAME_NOMBRE, Esquema.Producto.COLUMN_NAME_CANTIDAD, Esquema.Producto.COLUMN_NAME_IDSECCION};
@@ -91,5 +93,4 @@ public class LogicProducto {
 
         return lst;
     }
-
 }

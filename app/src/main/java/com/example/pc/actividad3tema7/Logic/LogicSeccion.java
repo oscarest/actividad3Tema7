@@ -98,5 +98,31 @@ public class LogicSeccion {
         Cursor cursor = conn.query(Esquema.Seccion.TABLE_NAME, null, null, null, null, null, null);
         return (cursor == null ? 0 : cursor.getCount());
     }
+    public static List MostrarExcesoSecciones(Context context)
+    {
+        List lst = new ArrayList<>();
+
+        String[] sqlFields = {Esquema.Seccion.COLUMN_NAME_ID, Esquema.Seccion.COLUMN_NAME_DESCRIPCION, Esquema.Seccion.COLUMN_NAME_MINSTOCK, Esquema.Seccion.COLUMN_NAME_MAXSTOCK};
+        String sqlWhere = Esquema.Producto.COLUMN_NAME_CANTIDAD + ">" + Esquema.Seccion.COLUMN_NAME_MAXSTOCK ;
+        String sqlOrderBy = Esquema.Seccion.COLUMN_NAME_DESCRIPCION + " ASC";
+        SQLiteDatabase conn = DB_SQLite.conectar(context, DB_SQLite.OPEN_MODE_READ);
+        Cursor cursor = conn.query(Esquema.Seccion.TABLE_NAME, sqlFields, sqlWhere, null, null, null, sqlOrderBy);
+        if (cursor.getCount() == 0) {
+            lst = null;
+        } else {
+            cursor.moveToFirst();
+            do {
+                Long dataId = cursor.getLong(cursor.getColumnIndex(Esquema.Seccion.COLUMN_NAME_ID));
+                String dataDescripcion = cursor.getString(cursor.getColumnIndex(Esquema.Seccion.COLUMN_NAME_DESCRIPCION));
+                Integer dataMinStock = cursor.getInt(cursor.getColumnIndex(Esquema.Seccion.COLUMN_NAME_MINSTOCK));
+                Integer dataMaxStock = cursor.getInt(cursor.getColumnIndex(Esquema.Seccion.COLUMN_NAME_MAXSTOCK));
+                lst.add(new Seccion(dataId, dataDescripcion, dataMinStock, dataMaxStock));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        DB_SQLite.desconectar(conn);
+
+        return lst;
+    }
 
 }

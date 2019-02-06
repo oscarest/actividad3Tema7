@@ -107,6 +107,22 @@ public class SeccionActivity extends Activity {
             txtListadoSecciones.append(msg.toString());
         }
     }
+    public void MostrarExcesoSecciones(View view) {
+        TextView txtListadoSecciones = findViewById(R.id.txtListadoSecciones);
+        txtListadoSecciones.setMovementMethod(new ScrollingMovementMethod());
+        txtListadoSecciones.setText("");
+
+        List<Seccion> lst = LogicSeccion.MostrarExcesoSecciones(this);
+        if (lst == null) {
+            mostrarMensaje("No existen secciones.");
+        } else {
+            StringBuilder msg = new StringBuilder();
+            for (Seccion s : lst) {
+                msg.append(s).append("\n");
+            }
+            txtListadoSecciones.append(msg.toString());
+        }
+    }
 
     private void mostrarMensaje(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
