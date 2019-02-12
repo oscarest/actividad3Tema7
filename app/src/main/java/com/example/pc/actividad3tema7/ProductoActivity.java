@@ -32,7 +32,7 @@ public class ProductoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_producto);
 
-        //txtNombre = findViewById(R.id.txtNombre);
+        txtNombre = findViewById(R.id.txtNombre);
         txtCantidad = findViewById(R.id.txtCantidad);
         lstSeccion = findViewById(R.id.lstSeccion);
 
