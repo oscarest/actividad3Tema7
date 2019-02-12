@@ -33,10 +33,6 @@ public class ProductoActivity extends Activity {
         setContentView(R.layout.activity_producto);
 
         txtNombre = findViewById(R.id.txtNombre);
-        //txtNombre = findViewById(R.id.txtNombre);
-
-
-        // esto es un cambio....
         txtCantidad = findViewById(R.id.txtCantidad);
         lstSeccion = findViewById(R.id.lstSeccion);
 
